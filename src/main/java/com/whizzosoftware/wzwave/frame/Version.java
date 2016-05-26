@@ -11,6 +11,8 @@ import com.whizzosoftware.wzwave.frame.transaction.DataFrameTransaction;
 import com.whizzosoftware.wzwave.frame.transaction.RequestResponseTransaction;
 import io.netty.buffer.ByteBuf;
 
+import java.util.Objects;
+
 /**
  * Message for retrieving version information.
  *
@@ -58,4 +60,19 @@ public class Version extends DataFrame {
         }
         return s;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Version version = (Version) o;
+        return libraryType == version.libraryType &&
+                Objects.equals(libraryVersion, version.libraryVersion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(libraryVersion, libraryType);
+    }
+
 }

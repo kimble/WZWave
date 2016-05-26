@@ -19,6 +19,7 @@
 # Generated files
 bin/
 gen/
+target
 
 # Gradle files
 .gradle/
